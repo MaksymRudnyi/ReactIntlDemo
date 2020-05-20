@@ -5,6 +5,7 @@ import './App.css';
 
 import { I18nPropvider, LOCALES } from './i18nProvider';
 import translate from "./i18nProvider/translate";
+import Input from './input';
 
 function App() {
   const [locale, setLocale] = useState(LOCALES.ENGLISH);
@@ -25,6 +26,19 @@ function App() {
             <hr/>
             Edit <code>src/App.js</code> and save to reload.
           </p>
+
+
+          <div className='THIS sample does not work'>
+            <input type="text" placeholder={translate('demo-placeholder')} />
+            <input type="text" placeholder={<FormattedMessage id="demo-placeholder" />} />
+          </div>
+
+          <Input />
+          <FormattedMessage id="demo-placeholder" defaultMessage="search">
+            {placeholder=>
+                <input placeholder={placeholder}/>
+            }
+          </FormattedMessage>
           <a
             className="App-link"
             href="https://reactjs.org"
